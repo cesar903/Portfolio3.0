@@ -1,5 +1,8 @@
 import styled from "styled-components";
+import { useState } from "react";
+import ModalProjeto from "./ModalProjeto";
 import { FaHeart } from "react-icons/fa";
+import { BiSolidMessageRounded } from "react-icons/bi";
 
 const GridContainer = styled.div`
   width: 100%;
@@ -46,25 +49,39 @@ const Overlay = styled.div`
 const HeartIcon = styled(FaHeart)`
   color: white;
   font-size: 28px;
+  margin-right: 20px;
+`;
+
+const MessageIcon = styled(BiSolidMessageRounded)`
+  color: white;
+  font-size: 28px;
 `;
 
 export default function PostGrid({ posts }) {
+  const [selectedPost, setSelectedPost] = useState(null);
+
   return (
     <GridContainer>
       <div className="container-fluid">
         <div className="row g-0">
           {posts.map((post, idx) => (
             <Col key={idx} className="col-4 col-md-4">
-              <CardWrapper>
-                <Img src={post.image} alt={`Projeto ${idx}`} />
+              <CardWrapper onClick={() => setSelectedPost(post)}>
+                <Img src={post.images[0]} alt={`Projeto ${idx}`} />
                 <Overlay className="overlay">
                   <HeartIcon />
+                  <MessageIcon />
                 </Overlay>
               </CardWrapper>
             </Col>
           ))}
         </div>
       </div>
+      <ModalProjeto
+        isOpen={selectedPost !== null}
+        onClose={() => setSelectedPost(null)}
+        projeto={selectedPost}
+      />
     </GridContainer>
   );
 }

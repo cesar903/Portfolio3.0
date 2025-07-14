@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import Logo from "../assets/logo.png"
+import { NavLink } from "react-router-dom";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoIosSearch } from "react-icons/io";
-import { FaRegMessage } from "react-icons/fa6";
+import { TbUserSquare } from "react-icons/tb";
+import { TbBrandMessenger } from "react-icons/tb";
 
 const SidebarContainer = styled.div`
   height: 100vh;
@@ -62,15 +64,17 @@ const SidebarButton = styled.button`
   background: none;
   border: none;
   margin: 15px 0;
-  font-size: 20px;
   color: #000;
   display: flex;
   align-items: center;
   flex-direction: row;
+  text-decoration: none;
+  font-size: medium;
+  padding-left: 10px;
+  font-weight: 800;
 
-  span {
-    margin-left: 10px;
-    font-size: 15px;
+  span{
+    margin-left: 15px;
   }
 
   &:hover {
@@ -87,8 +91,6 @@ const SidebarButton = styled.button`
   }
 `;
 
-
-
 export default function Sidebar() {
   return (
     <SidebarContainer>
@@ -97,19 +99,27 @@ export default function Sidebar() {
       </LogoWrapper>
 
       <ButtonsWrapper>
-        <SidebarButton>
+        <SidebarButton as={NavLink} to="/">
           <GrHomeRounded />
-          <span>Mensagem</span>
+          <span>Projetos</span>
         </SidebarButton>
-        <SidebarButton>
+
+        <SidebarButton as={NavLink} to="/knowledge">
           <IoIosSearch />
           <span>Sobre</span>
         </SidebarButton>
-        <SidebarButton>
-          <FaRegMessage />
+
+        <SidebarButton as={NavLink} to="/marking">
+          <TbUserSquare />
+          <span>Menções</span>
+        </SidebarButton>
+
+        <SidebarButton as={NavLink} target="_blank" to={`https://api.whatsapp.com/send/?phone=5511982192778&text&type=phone_number&app_absent=0`}>
+          <TbBrandMessenger />
           <span>Conversar</span>
         </SidebarButton>
       </ButtonsWrapper>
+
     </SidebarContainer>
   );
 }

@@ -1,71 +1,107 @@
 import React from "react";
+import Perfil from "../assets/perfil.jpg";
 import styled from "styled-components";
-import { FaHeart } from "react-icons/fa";
+import { IoIosHeartEmpty } from "react-icons/io";
+import { BsSend } from "react-icons/bs";
+import { LuMessageCircle } from "react-icons/lu";
+import { BiSolidMessageRounded } from "react-icons/bi";
 
-const GridContainer = styled.div`
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  background-color: #fff;
+const FeedContainer = styled.div`
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const Col = styled.div`
-  padding: 0.09rem;
-`;
-
-const CardWrapper = styled.div`
+const Card = styled.div`
+  width: 400px;
+  max-width: 90%;
+  margin-bottom: 2rem;
   position: relative;
-  width: 100%;
+  border-radius: 3px;
   overflow: hidden;
+  background-color: #fff;
 
-  &:hover .overlay {
-    opacity: 1;
+  @media (max-width: 768px) {
+    width: 100%;
   }
+`;
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  gap: 0.8rem;
+`;
+
+const ImgPerfil = styled.img`
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+`;
+
+const Username = styled.span`
+  font-weight: bold;
 `;
 
 const Img = styled.img`
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  height: 600px;
   display: block;
+  object-fit: cover;
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.694);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+const Actions = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
 `;
 
-const HeartIcon = styled(FaHeart)`
-  color: white;
-  font-size: 28px;
+const HeartIcon = styled(IoIosHeartEmpty)`
+  font-size: 22px;
+  cursor: pointer;
+`;
+
+const MessageIcon = styled(LuMessageCircle)`
+  font-size: 22px;
+  cursor: pointer;
+  transform: scaleX(-1);
+`;
+
+const SendIcon = styled(BsSend)`
+  font-size: 22px;
+  cursor: pointer;
+`;
+
+const Description = styled.p`
+  padding: 0 1rem 1rem;
+  margin: 0;
+  font-size: 15px;
 `;
 
 export default function Knowledge({ knowledges }) {
   return (
-    <GridContainer>
-      <div className="container-fluid">
-        <div className="row g-0">
-          {knowledges.map((knowledge, idx) => (
-            <Col key={idx} className="col-4 col-md-4">
-              <CardWrapper>
-                <Img src={knowledge.image} alt={`Projeto ${idx}`} />
-                <Overlay className="overlay">
-                  <HeartIcon />
-                </Overlay>
-              </CardWrapper>
-            </Col>
-          ))}
-        </div>
-      </div>
-    </GridContainer>
+    <FeedContainer>
+      {knowledges.map((item, idx) => (
+        <Card key={idx}>
+          <Header>
+            <ImgPerfil src={Perfil} alt="Perfil" />
+            <Username>cesarreis___</Username>
+          </Header>
+
+          <Img src={item.image} alt={`Conhecimento ${idx}`} />
+
+          <Actions>
+            <HeartIcon />
+            <MessageIcon />
+            <SendIcon />
+          </Actions>
+
+          <Description>
+            <strong> cesarreis__ </strong> {item.description || "Legenda do post ou conhecimento aqui."}
+          </Description>
+        </Card>
+      ))}
+    </FeedContainer>
   );
 }

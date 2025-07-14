@@ -1,10 +1,19 @@
-import Project1 from "../assets/project3.jpg";
+import Project1 from "../assets/project1.jpg";
+import Project2 from "../assets/project2.jpg";
+import Project3 from "../assets/project3.jpg";
 
 export default [
-  { image: Project1 },
-  { image: Project1 },
-  { image: Project1 },
-  { image: Project1 },
-  { image: Project1 },
-  { image: Project1 },
+  {
+    images: [Project1, Project2, Project3], // array de imagens
+    description: "Projeto em React com login, API e responsividade.",
+  },
+  {
+    images: [Project1, Project3],
+    description: "Projeto em Bootstrap com CRUD completo.",
+  },
+  {
+    images: [Project2, Project1],
+    description: "Batatinha frita 123",
+  },
+  // ...outros projetos
 ];

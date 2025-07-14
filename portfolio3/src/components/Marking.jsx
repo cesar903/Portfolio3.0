@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaHeart } from "react-icons/fa";
+import { BiSolidMessageRounded } from "react-icons/bi";
+import ModalProjeto from "./ModalProjeto"; // ⬅️ importe o modal
 
 const GridContainer = styled.div`
   width: 100%;
@@ -48,25 +50,42 @@ const Overlay = styled.div`
 const HeartIcon = styled(FaHeart)`
   color: white;
   font-size: 28px;
+  margin-right: 20px;
+`;
+
+const MessageIcon = styled(BiSolidMessageRounded)`
+  color: white;
+  font-size: 28px;
 `;
 
 export default function Marking({ markings }) {
+  const [selectedMarking, setSelectedMarking] = useState(null);
+
   return (
-    <GridContainer>
-      <div className="container-fluid">
-        <div className="row g-0">
-          {markings.map((marking, idx) => (
-            <Col key={idx} className="col-4 col-md-4">
-              <CardWrapper>
-                <Img src={marking.image} alt={`Projeto ${idx}`} />
-                <Overlay className="overlay">
-                  <HeartIcon />
-                </Overlay>
-              </CardWrapper>
-            </Col>
-          ))}
+    <>
+      <GridContainer>
+        <div className="container-fluid">
+          <div className="row g-0">
+            {markings.map((marking, idx) => (
+              <Col key={idx} className="col-4 col-md-4">
+                <CardWrapper onClick={() => setSelectedMarking(marking)}>
+                  <Img src={marking.images[0]} alt={`Projeto ${idx}`} />
+                  <Overlay className="overlay">
+                    <HeartIcon />
+                    <MessageIcon />
+                  </Overlay>
+                </CardWrapper>
+              </Col>
+            ))}
+          </div>
         </div>
-      </div>
-    </GridContainer>
+      </GridContainer>
+
+      <ModalProjeto
+        isOpen={selectedMarking !== null}
+        onClose={() => setSelectedMarking(null)}
+        projeto={selectedMarking}
+      />
+    </>
   );
 }

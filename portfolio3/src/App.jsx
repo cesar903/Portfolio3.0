@@ -9,6 +9,7 @@ import Menu from "./components/Menu";
 import posts from "./data/posts";
 import knowledges from "./data/knowledge";
 import markings from "./data/marking";
+import FloatingButton from "./components/FloatingButton"
 import styled from "styled-components";
 
 const Container = styled.div``;
@@ -43,6 +44,7 @@ function App() {
             <Route path="/marking" element={<Marking markings={markings} />} />
           </Routes>
         </Main>
+        <FloatingButton />
       </Container>
     </Router>
   );
