@@ -16,7 +16,6 @@ const Overlay = styled.div`
 
 const ModalBox = styled.div`
   max-width: 380px;
-  width: 90%;
   background: black;
   border-radius: 5px;
   overflow: hidden;
@@ -25,7 +24,6 @@ const ModalBox = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
-    width: 100%;
     border-radius: 0;
   }
 `;

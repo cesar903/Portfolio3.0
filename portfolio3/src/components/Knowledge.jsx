@@ -30,8 +30,12 @@ const Card = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: center;
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 0rem;
   gap: 0.8rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ImgPerfil = styled.img`
@@ -46,7 +50,7 @@ const Username = styled.span`
 
 const Img = styled.img`
   width: 100%;
-  height: 600px;
+  height: 500px;
   display: block;
   object-fit: cover;
 `;
@@ -54,7 +58,7 @@ const Img = styled.img`
 const Actions = styled.div`
   display: flex;
   gap: 1rem;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 0rem;
 `;
 
 const HeartIcon = styled(IoIosHeartEmpty)`
@@ -74,10 +78,16 @@ const SendIcon = styled(BsSend)`
 `;
 
 const Description = styled.p`
-  padding: 0 1rem 1rem;
+  padding: 0 0rem 1rem;
   margin: 0;
   font-size: 15px;
 `;
+
+const Date = styled.p`
+  color: #888;
+  font-size: 12px;
+  font-style: italic;
+`
 
 export default function Knowledge({ knowledges }) {
   return (
@@ -86,7 +96,11 @@ export default function Knowledge({ knowledges }) {
         <Card key={idx}>
           <Header>
             <ImgPerfil src={Perfil} alt="Perfil" />
-            <Username>cesarreis___</Username>
+            <div>
+              <Username>cesarreis__</Username>
+              <Date>{item.data}</Date>
+            </div>
+
           </Header>
 
           <Img src={item.image} alt={`Conhecimento ${idx}`} />

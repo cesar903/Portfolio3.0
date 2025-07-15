@@ -117,12 +117,14 @@ export default function ProfileHeader() {
                   <p>
                     <span><strong className='text-dark'>+15</strong> projetos</span>
                     <span><strong className='text-dark'>+20</strong> Clientes</span>
-                    <span><strong className='text-dark'>3</strong> Empresas</span>
+                    <span><strong className='text-dark'>4</strong> Empresas</span>
                   </p>
                 </Desc>
                 <Name><strong>Cesar Reis</strong></Name>
-                <TextDiferente>Programador(a) React</TextDiferente>
-                <Bio>
+                <TextDiferente>- Programador(a) FullStack</TextDiferente>
+                <TextDiferente>- Analise e Desenvolvimento de Sistemas</TextDiferente>
+                <TextDiferente>Pós-Graduando em IA e Machine Learning</TextDiferente>
+                <Bio className='mt-2'>
                   <a href="https://www.linkedin.com/in/cesar-reis-b07064187/" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin /> Linkedin
                   </a>

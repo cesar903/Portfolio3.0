@@ -12,21 +12,30 @@ const Backdrop = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999;
+  padding: 1rem; /* Um pequeno padding para o modal não colar nas bordas */
 `;
 
 const ModalContent = styled.div`
   background: #fff;
   width: 90%;
   max-width: 900px;
-  height: 90vh;
+  /* Em desktop, ainda queremos uma altura máxima para o modal não ficar gigante */
+  max-height: 90vh; 
   display: flex;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden; /* Oculta a barra de rolagem por padrão (em desktop) */
   position: relative;
+  flex-direction: row;
+  overflow-y: auto;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    height: auto;
+    margin: 1rem; /* Margem reduzida para maximizar o espaço */
+    width: calc(100% - 2rem); 
+    overflow-y: auto;
+    
+    overflow-y: auto; /* Permite a rolagem quando o conteúdo exceder o max-height */
+    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
   }
 `;
 
@@ -37,31 +46,41 @@ const ImageSlider = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  /* Em mobile, não limite a altura do ImageSlider se você quer que a imagem seja grande */
 `;
 
 const SliderImage = styled.img`
   width: 100%;
-  height: 100%;
   object-fit: contain;
 `;
 
 const InfoPanel = styled.div`
   flex: 1;
   padding: 1rem;
-  overflow-y: auto;
+   min-height: 150px;
+   overflow-y: auto;
 
-  h5{
-    font-size: 1rem;
-  }
+   @media (max-width: 768px) {
+    overflow-y: none;
+   }
 `;
 
 const CloseButton = styled(FaTimes)`
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 24px;
-  color: #fff;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  color: white; 
+  z-index: 1001; 
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    color: #fff; /* Cor do botão para ser visível em mobile */
+    position: fixed; /* Fixa o botão na viewport para que ele não role com o modal */
+    right: 20px;
+    top: 20px;
+    z-index: 1002;
+  }
 `;
 
 const NavButton = styled.button`
@@ -138,11 +157,11 @@ export default function ModalProjeto({ isOpen, onClose, projeto }) {
                     <div className="container">
                         <div className="row">
                             <div className="col-2">
-                                <ImgPerfil src={Perfil} alt="" className="img-fluid" />
+                                <ImgPerfil src={projeto.perfil} alt="" className="img-fluid" />
                             </div>
                             <div className="col-10">
-                                <h5>@cesarreis___</h5>
-                                <p>{projeto.description}</p>
+                                <h5>@{projeto.marcacao}</h5>
+                                <p style={{ whiteSpace: "pre-line" }}>{projeto.description}</p>
                                 
                             </div>
                         </div>
