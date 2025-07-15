@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import { IoMdClose } from "react-icons/io";
+import StoryImage from "../assets/story.png";
+import PerfilImg from "../assets/perfil.jpg";
 import { IoIosPause } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 
 const Overlay = styled.div`
   position: fixed;
@@ -14,7 +16,7 @@ const Overlay = styled.div`
   align-items: center;
 `;
 
-const ModalBox = styled.div`
+const StoryBox = styled.div`
   max-width: 380px;
   width: 90%;
   background: black;
@@ -39,8 +41,8 @@ const ProgressBar = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 3px;
-  background: #00d1ff;
+  height: 2px;
+  background: white;
   animation: ${progress} 5s linear forwards;
   animation-play-state: ${(props) => (props.paused ? "paused" : "running")};
   z-index: 10;
@@ -48,7 +50,6 @@ const ProgressBar = styled.div`
   margin-top: 2px;
   margin-left: 5px;
   margin-right: 5px;
-  border-radius: 2px;
 `;
 
 const Header = styled.div`
@@ -63,17 +64,36 @@ const Header = styled.div`
   padding: 10px;
 `;
 
-const SkillLabel = styled.span`
+const ProfileSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const ProfilePic = styled.img`
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid white;
+`;
+
+const Username = styled.span`
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
   color: white;
+`;
+
+const IconGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 
 const IconButton = styled.button`
   background: none;
   border: none;
   color: white;
-  font-size: 22px;
+  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -83,27 +103,23 @@ const IconButton = styled.button`
   }
 `;
 
-const CloseButton = styled(IoMdClose)`
+const CloseIcon = styled(IoMdClose)`
+  font-size: 22px;
   color: white;
-  font-size: 26px;
   cursor: pointer;
-  margin-left: 15px;
 
   &:hover {
-    color: #ff4444;
+    color: #ff4d4d;
   }
 `;
 
-const SkillImage = styled.img`
+const Image = styled.img`
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
-  max-height: 350px;
-  background: #222;
 `;
 
-export default function SkillsModal({ skill, onClose }) {
+export default function StoryModal({ onClose }) {
   const [paused, setPaused] = useState(false);
   const timeoutRef = useRef(null);
 
@@ -114,9 +130,7 @@ export default function SkillsModal({ skill, onClose }) {
       }, 5000);
     }
     return () => clearTimeout(timeoutRef.current);
-  }, [paused, onClose, skill]); // reset timer se trocar skill
-
-  if (!skill) return null;
+  }, [paused, onClose]);
 
   const togglePause = () => {
     setPaused((prev) => {
@@ -127,19 +141,26 @@ export default function SkillsModal({ skill, onClose }) {
 
   return (
     <Overlay onClick={onClose}>
-      <ModalBox onClick={(e) => e.stopPropagation()}>
+      <StoryBox onClick={(e) => e.stopPropagation()}>
         <ProgressBar paused={paused} />
         <Header>
-          <SkillLabel>{skill.label}</SkillLabel>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <IconButton onClick={togglePause}>
+          <ProfileSection>
+            <ProfilePic src={PerfilImg} alt="Cesar Reis" />
+            <Username>cesarreis__</Username>
+          </ProfileSection>
+
+          <IconGroup>
+            <IconButton onClick={togglePause} title="Pausar/Reproduzir">
               {paused ? <FaPlay /> : <IoIosPause />}
             </IconButton>
-            <CloseButton onClick={onClose} title="Fechar" />
-          </div>
+            <IconButton onClick={onClose} title="Fechar">
+              <CloseIcon />
+            </IconButton>
+          </IconGroup>
         </Header>
-        <SkillImage src={skill.modalImage || skill.image} alt={skill.label} />
-      </ModalBox>
+
+        <Image src={StoryImage} alt="Story" />
+      </StoryBox>
     </Overlay>
   );
 }

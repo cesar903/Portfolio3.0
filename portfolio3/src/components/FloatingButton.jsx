@@ -27,6 +27,7 @@ const FloatingWrapper = styled.a`
     right: 10px;
     bottom: 10px;
     padding: 8px 12px;
+    margin-bottom: 55px;
   }
 `;
 

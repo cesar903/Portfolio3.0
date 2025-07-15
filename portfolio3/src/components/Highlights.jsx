@@ -7,6 +7,8 @@ import Bootstrap from "../assets/bootstrap.webp";
 import LogoMysql from "../assets/logoMysql.png";
 import Python from "../assets/python.png";
 import MongoDb from "../assets/mongoDb.png";
+import Mais from "../assets/iconeMais.jpg"
+import Skills from "../assets/skills.jpg"
 
 const HighlightsWrapper = styled.div`
   overflow-x: auto;
@@ -53,12 +55,13 @@ export default function Highlights() {
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   const highlights = [
-    { image: LogoReact, label: "React ❤️", description: "Biblioteca para interfaces modernas e declarativas." },
-    { image: Html, label: "Html,Css e JS 🚀", description: "Tríade fundamental para web." },
-    { image: Bootstrap, label: "Bootstrap 📌", description: "Framework de componentes responsivos." },
-    { image: LogoMysql, label: "MySql 🐬", description: "Banco de dados relacional rápido e confiável." },
-    { image: Python, label: "Python 🐍", description: "Linguagem poderosa e versátil." },
-    { image: MongoDb, label: "MongoDB 😜", description: "Banco de dados NoSQL orientado a documentos." },
+    { image: LogoReact, modalImage: Skills, label: "React ❤️", description: "Biblioteca para interfaces modernas e declarativas." },
+    { image: Html, modalImage: Skills, label: "Html,Css e JS 🚀", description: "Tríade fundamental para web." },
+    { image: Bootstrap, modalImage: Skills, label: "Bootstrap 📌", description: "Framework de componentes responsivos." },
+    { image: LogoMysql, modalImage: Skills, label: "MySql 🐬", description: "Banco de dados relacional rápido e confiável." },
+    { image: Python, modalImage: Skills, label: "Python 🐍", description: "Linguagem poderosa e versátil." },
+    { image: MongoDb, modalImage: Skills, label: "MongoDB 😜", description: "Banco de dados NoSQL orientado a documentos." },
+    { image: Mais, modalImage: Skills, label: "E muito mais..", description: "Banco de dados NoSQL orientado a documentos." },
   ];
 
   return (
