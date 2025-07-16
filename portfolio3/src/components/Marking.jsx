@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { FaHeart } from "react-icons/fa";
 import { BiSolidMessageRounded } from "react-icons/bi";
 import ModalProjeto from "./ModalProjeto";
+import { IoIosPhotos } from "react-icons/io";
 
 const GridContainer = styled.div`
   width: 100%;
   padding: 0;
   margin: 0;
   background-color: ${(props) => props.theme.background};
+  cursor: pointer;
 `;
 
 const Col = styled.div`
@@ -58,6 +60,19 @@ const MessageIcon = styled(BiSolidMessageRounded)`
   font-size: 28px;
 `;
 
+const TopRightIcon = styled(IoIosPhotos)`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: white;
+  padding: 4px;
+  border-radius: 50%;
+  z-index: 2;
+  font-size: 25px;
+  transform: rotate(180deg); 
+`;
+
+
 export default function Marking({ markings }) {
   const [selectedMarking, setSelectedMarking] = useState(null);
 
@@ -69,6 +84,7 @@ export default function Marking({ markings }) {
             {markings.map((marking, idx) => (
               <Col key={idx} className="col-4 col-md-4">
                 <CardWrapper onClick={() => setSelectedMarking(marking)}>
+                  <TopRightIcon />
                   <Img src={marking.images[0]} alt={`Projeto ${idx}`} />
                   <Overlay className="overlay">
                     <HeartIcon />

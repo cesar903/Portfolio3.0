@@ -26,7 +26,7 @@ const ModalContent = styled.div`
   max-width: 900px;
   height: 90vh;
   display: flex;
-  border-radius: 8px;
+  border-radius: 1px;
   overflow: hidden;
   position: relative;
   flex-direction: row;
@@ -71,6 +71,8 @@ const InfoPanel = styled.div`
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
 
   @media (max-width: 768px) {
     overflow-y: visible;
@@ -174,7 +176,10 @@ export default function ModalProjeto({ isOpen, onClose, projeto }) {
               </div>
               <div className="col-10">
                 <h5>@{projeto.marcacao}</h5>
-                <p style={{ whiteSpace: "pre-line" }}>{projeto.description}</p>
+                <p
+                  style={{ whiteSpace: "pre-line" }}
+                  dangerouslySetInnerHTML={{ __html: projeto.description }}
+                />
 
               </div>
             </div>

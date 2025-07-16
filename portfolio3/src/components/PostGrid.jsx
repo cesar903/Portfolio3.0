@@ -3,12 +3,15 @@ import { useState } from "react";
 import ModalProjeto from "./ModalProjeto";
 import { FaHeart } from "react-icons/fa";
 import { BiSolidMessageRounded } from "react-icons/bi";
+import { IoIosPhotos } from "react-icons/io";
+
 
 const GridContainer = styled.div`
   width: 100%;
   padding: 0;
   margin: 0;
   background-color: ${(props) => props.theme.background};
+  cursor: pointer;
 `;
 
 const Col = styled.div`
@@ -58,6 +61,19 @@ const MessageIcon = styled(BiSolidMessageRounded)`
   font-size: 28px;
 `;
 
+const TopRightIcon = styled(IoIosPhotos)`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: white;
+  padding: 4px;
+  border-radius: 50%;
+  z-index: 2;
+  font-size: 25px;
+  transform: rotate(180deg); 
+`;
+
+
 
 export default function PostGrid({ posts }) {
   const [selectedPost, setSelectedPost] = useState(null);
@@ -69,6 +85,7 @@ export default function PostGrid({ posts }) {
           {posts.map((post, idx) => (
             <Col key={idx} className="col-4 col-md-4">
               <CardWrapper onClick={() => setSelectedPost(post)}>
+                <TopRightIcon />
                 <Img src={post.images[0]} alt={`Projeto ${idx}`} />
                 <Overlay className="overlay">
                   <HeartIcon />

@@ -29,9 +29,7 @@ const ProfileImgWrapper = styled.div`
   padding: 4px;
   display: flex;
   align-items: center;
-
-
- 
+  cursor: pointer;
 `;
 
 const ProfileImg = styled.img`
