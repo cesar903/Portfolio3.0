@@ -7,8 +7,8 @@ const FloatingWrapper = styled.a`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #1c1e21;
-  color: white;
+  background: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
   border-radius: 40px;
   padding: 10px 16px;
   display: flex;
@@ -48,6 +48,23 @@ const Avatar = styled.img`
   border-radius: 50%;
 `;
 
+const Badge = styled.span`
+  position: absolute;
+  top: 2px;
+  right: -4px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  border-radius: 50%;
+  z-index: 1;
+  font-weight: bold;
+`;
+
+
 export default function FloatingButton() {
 
     return (
@@ -57,6 +74,7 @@ export default function FloatingButton() {
             rel="noopener noreferrer"
         >
             <IconWrapper>
+                <Badge>3</Badge>
                 <TbBrandMessenger />
             </IconWrapper>
             <Text>Mensagens</Text>

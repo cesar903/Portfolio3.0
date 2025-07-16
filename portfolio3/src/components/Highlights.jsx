@@ -13,8 +13,9 @@ import Skills from "../assets/skills.jpg"
 const HighlightsWrapper = styled.div`
   overflow-x: auto;
   padding: 1rem 2rem;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
   scrollbar-width: none;
+  color: ${(props) => props.theme.color};
   &::-webkit-scrollbar {
     display: none;
   }

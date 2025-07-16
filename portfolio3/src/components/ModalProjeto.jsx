@@ -11,33 +11,35 @@ const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  padding: 1rem; /* Um pequeno padding para o modal não colar nas bordas */
+  z-index: 1100;
+  padding: 1rem;
+
+  @media (max-width: 768px) {
+    overflow-y: auto; /* scroll em mobile */
+  }
 `;
 
+
 const ModalContent = styled.div`
-  background: #fff;
+  background: ${(props) => props.theme.background};
   width: 90%;
   max-width: 900px;
-  /* Em desktop, ainda queremos uma altura máxima para o modal não ficar gigante */
-  max-height: 90vh; 
+  height: 90vh;
   display: flex;
   border-radius: 8px;
-  overflow: hidden; /* Oculta a barra de rolagem por padrão (em desktop) */
+  overflow: hidden;
   position: relative;
   flex-direction: row;
-  overflow-y: auto;
+  color: ${(props) => props.theme.color};
 
   @media (max-width: 768px) {
     flex-direction: column;
-    margin: 1rem; /* Margem reduzida para maximizar o espaço */
-    width: calc(100% - 2rem); 
+    height: 90vh; /* aqui está o que você quer */
     overflow-y: auto;
-    
-    overflow-y: auto; /* Permite a rolagem quando o conteúdo exceder o max-height */
-    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
   }
 `;
+
+
 
 const ImageSlider = styled.div`
   flex: 1;
@@ -46,24 +48,35 @@ const ImageSlider = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  /* Em mobile, não limite a altura do ImageSlider se você quer que a imagem seja grande */
+  height: 100%;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `;
+
 
 const SliderImage = styled.img`
   width: 100%;
   object-fit: contain;
+
+  @media (max-width: 768px) {
+    height: auto;
+    max-height: 50vh;
+  }
 `;
+
 
 const InfoPanel = styled.div`
   flex: 1;
   padding: 1rem;
-   min-height: 150px;
-   overflow-y: auto;
+  overflow-y: auto;
 
-   @media (max-width: 768px) {
-    overflow-y: none;
-   }
+  @media (max-width: 768px) {
+    overflow-y: visible;
+  }
 `;
+
 
 const CloseButton = styled(FaTimes)`
   position: absolute;
@@ -71,12 +84,12 @@ const CloseButton = styled(FaTimes)`
   right: 10px;
   font-size: 28px;
   color: white; 
-  z-index: 1001; 
+  z-index: 1101; 
   cursor: pointer;
 
   @media (max-width: 768px) {
-    color: #fff; /* Cor do botão para ser visível em mobile */
-    position: fixed; /* Fixa o botão na viewport para que ele não role com o modal */
+    color: white; 
+    position: fixed; 
     right: 20px;
     top: 20px;
     z-index: 1002;
@@ -90,7 +103,7 @@ const NavButton = styled.button`
   font-size: 28px;
   background: none;
   border: none;
-  color: #fff;
+  color: ${(props) => props.theme.color};
   cursor: pointer;
   z-index: 1;
 
@@ -113,63 +126,63 @@ const ImgPerfil = styled.img`
 `
 
 export default function ModalProjeto({ isOpen, onClose, projeto }) {
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    useEffect(() => {
-        if (isOpen) setCurrentIndex(0); // Reseta ao abrir
-    }, [isOpen]);
+  useEffect(() => {
+    if (isOpen) setCurrentIndex(0); // Reseta ao abrir
+  }, [isOpen]);
 
-    if (!isOpen || !projeto) return null;
+  if (!isOpen || !projeto) return null;
 
-    const handlePrev = () => {
-        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
-    };
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
+  };
 
-    const handleNext = () => {
-        setCurrentIndex((prev) =>
-            prev < projeto.images.length - 1 ? prev + 1 : prev
-        );
-    };
-
-    return (
-        <Backdrop onClick={onClose}>
-            <CloseButton />
-            <ModalContent onClick={(e) => e.stopPropagation()}>
-                <ImageSlider>
-                    <PrevButton onClick={handlePrev} disabled={currentIndex === 0}>
-                        <FaCircleChevronLeft />
-                    </PrevButton>
-
-                    <SliderImage
-                        src={projeto.images[currentIndex]}
-                        alt={`Imagem ${currentIndex + 1}`}
-                    />
-
-                    <NextButton
-                        onClick={handleNext}
-                        disabled={currentIndex === projeto.images.length - 1}
-                    >
-                        <FaCircleChevronRight />
-                    </NextButton>
-                </ImageSlider>
-
-                <InfoPanel>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-2">
-                                <ImgPerfil src={projeto.perfil} alt="" className="img-fluid" />
-                            </div>
-                            <div className="col-10">
-                                <h5>@{projeto.marcacao}</h5>
-                                <p style={{ whiteSpace: "pre-line" }}>{projeto.description}</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-
-
-                </InfoPanel>
-            </ModalContent>
-        </Backdrop>
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      prev < projeto.images.length - 1 ? prev + 1 : prev
     );
+  };
+
+  return (
+    <Backdrop onClick={onClose}>
+      <CloseButton />
+      <ModalContent onClick={(e) => e.stopPropagation()}>
+        <ImageSlider>
+          <PrevButton onClick={handlePrev} disabled={currentIndex === 0}>
+            <FaCircleChevronLeft />
+          </PrevButton>
+
+          <SliderImage
+            src={projeto.images[currentIndex]}
+            alt={`Imagem ${currentIndex + 1}`}
+          />
+
+          <NextButton
+            onClick={handleNext}
+            disabled={currentIndex === projeto.images.length - 1}
+          >
+            <FaCircleChevronRight />
+          </NextButton>
+        </ImageSlider>
+
+        <InfoPanel>
+          <div className="container">
+            <div className="row">
+              <div className="col-2">
+                <ImgPerfil src={projeto.perfil} alt="" className="img-fluid" />
+              </div>
+              <div className="col-10">
+                <h5>@{projeto.marcacao}</h5>
+                <p style={{ whiteSpace: "pre-line" }}>{projeto.description}</p>
+
+              </div>
+            </div>
+          </div>
+
+
+        </InfoPanel>
+      </ModalContent>
+    </Backdrop>
+  );
 }

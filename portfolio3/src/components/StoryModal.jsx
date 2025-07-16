@@ -10,7 +10,7 @@ const Overlay = styled.div`
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.85);
-  z-index: 999;
+  z-index: 1001;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,15 +37,17 @@ const progress = keyframes`
   to { width: 100%; }
 `;
 
-const ProgressBar = styled.div`
+const ProgressBar = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "paused"
+})`
   position: absolute;
   top: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   background: white;
   animation: ${progress} 5s linear forwards;
   animation-play-state: ${(props) => (props.paused ? "paused" : "running")};
-  z-index: 10;
+  z-index: 1001;
   width: 100%;
   margin-top: 2px;
   margin-left: 5px;
@@ -60,7 +62,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
+  z-index: 1001;
   padding: 10px;
 `;
 
@@ -80,7 +82,7 @@ const ProfilePic = styled.img`
 const Username = styled.span`
   font-weight: bold;
   font-size: 14px;
-  color: white;
+  color: ${(props) => props.theme.color};
 `;
 
 const IconGroup = styled.div`
@@ -92,7 +94,7 @@ const IconGroup = styled.div`
 const IconButton = styled.button`
   background: none;
   border: none;
-  color: white;
+  color: ${(props) => props.theme.color};
   font-size: 18px;
   cursor: pointer;
   display: flex;
@@ -105,7 +107,7 @@ const IconButton = styled.button`
 
 const CloseIcon = styled(IoMdClose)`
   font-size: 22px;
-  color: white;
+  color: ${(props) => props.theme.color};
   cursor: pointer;
 
   &:hover {

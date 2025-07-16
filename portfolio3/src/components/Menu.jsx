@@ -5,16 +5,20 @@ import { TbUserSquare } from "react-icons/tb";
 import styled from "styled-components";
 
 const MenuContainer = styled.div`
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
   border-top: 1px solid #ddd;
 `;
 
 const MenuLink = styled(NavLink)`
-  color: gray;
+  color: ${(props) => props.theme.color};
   text-decoration: none;
 
+  &:hover{
+    color: #535151 !important;
+  }
+
   &.active {
-    color: black;
+    color: gray;
   }
 `;
 

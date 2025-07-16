@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { useTheme } from 'styled-components';
 import Logo from "../assets/logo.png"
+import LogoDark from "../assets/logoDark.png"
 import { NavLink } from "react-router-dom";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoIosSearch } from "react-icons/io";
@@ -8,7 +10,7 @@ import { TbBrandMessenger } from "react-icons/tb";
 
 const SidebarContainer = styled.div`
   height: 100vh;
-  background: white;
+  background: ${(props) => props.theme.background};
   border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;
@@ -31,7 +33,7 @@ const SidebarContainer = styled.div`
     left: 0;
     top: auto; 
     padding: 0 10px;
-    background: white;
+    background: ${(props) => props.theme.background};
   }
 `;
 
@@ -64,7 +66,7 @@ const SidebarButton = styled.button`
   background: none;
   border: none;
   margin: 15px 0;
-  color: #000;
+  color: ${(props) => props.theme.color};
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -92,10 +94,11 @@ const SidebarButton = styled.button`
 `;
 
 export default function Sidebar() {
+  const theme = useTheme();
   return (
     <SidebarContainer>
       <LogoWrapper>
-        <img src={Logo} alt="logo" className="mb-4" />
+        <img src={theme.title === 'dark' ? LogoDark : Logo} alt="logo" className="mb-4" />
       </LogoWrapper>
 
       <ButtonsWrapper>

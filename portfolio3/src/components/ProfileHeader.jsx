@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import StoryModal from './StoryModal';
 import Perfil from '../assets/perfil.jpg'
 import styled from "styled-components";
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 2rem;
   gap: 2rem;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -47,12 +47,14 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: ${(props) => props.theme.color};
 `;
 
 
 const User = styled.h2`
   font-size: 13px;
   margin: 0;
+  float: left;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -76,12 +78,12 @@ const Desc = styled.span`
   color: gray;
   margin-top: 20px;
 
-  strong{
-    color: black;
-  }
-
   span{
     margin-right: 8px;
+  }
+
+  .text-dark{
+    color: ${(props) => props.theme.color} !important;
   }
 `;
 
@@ -90,11 +92,25 @@ const TextDiferente = styled.span`
     font-size: 12px;
 `
 
+const Button = styled.button`
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 15px;
+  font-size: 15px;
+  margin-top: 5px;
 
-export default function ProfileHeader() {
+   @media (max-width: 768px) {
+    font-size: 12px;
+    width: 60px;
+  }
+`
+
+
+export default function ProfileHeader({ isDark, setIsDark }) {
 
   const [showStory, setShowStory] = useState(false);
-
   const handleStoryOpen = () => {
     setShowStory(true);
   };
@@ -112,7 +128,17 @@ export default function ProfileHeader() {
             </div>
             <div className="col-12 col-md-8 mt-3 mt-md-0">
               <Info>
-                <User>cesarreis__</User>
+                <User>
+                  cesarreis__
+                  <Button onClick={() => setIsDark(prev => !prev)} title="Alternar tema">
+                    Thame
+                  </Button>
+
+                  <Button >
+                    CV
+                  </Button>
+                </User>
+
                 <Desc >
                   <p>
                     <span><strong className='text-dark'>+15</strong> projetos</span>

@@ -8,7 +8,7 @@ const GridContainer = styled.div`
   width: 100%;
   padding: 0;
   margin: 0;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
 `;
 
 const Col = styled.div`
@@ -41,6 +41,7 @@ const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.694);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,6 +57,7 @@ const MessageIcon = styled(BiSolidMessageRounded)`
   color: white;
   font-size: 28px;
 `;
+
 
 export default function PostGrid({ posts }) {
   const [selectedPost, setSelectedPost] = useState(null);

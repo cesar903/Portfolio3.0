@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaHeart } from "react-icons/fa";
 import { BiSolidMessageRounded } from "react-icons/bi";
-import ModalProjeto from "./ModalProjeto"; // ⬅️ importe o modal
+import ModalProjeto from "./ModalProjeto";
 
 const GridContainer = styled.div`
   width: 100%;
   padding: 0;
   margin: 0;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
 `;
 
 const Col = styled.div`
