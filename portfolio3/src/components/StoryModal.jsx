@@ -94,7 +94,7 @@ const IconGroup = styled.div`
 const IconButton = styled.button`
   background: none;
   border: none;
-  color: ${(props) => props.theme.color};
+  color: white;
   font-size: 18px;
   cursor: pointer;
   display: flex;
@@ -107,7 +107,7 @@ const IconButton = styled.button`
 
 const CloseIcon = styled(IoMdClose)`
   font-size: 22px;
-  color: ${(props) => props.theme.color};
+  color: white;
   cursor: pointer;
 
   &:hover {

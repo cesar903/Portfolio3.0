@@ -72,7 +72,7 @@ const SkillLabel = styled.span`
 const IconButton = styled.button`
   background: none;
   border: none;
-  color: ${(props) => props.theme.color};
+  color: white;
   font-size: 22px;
   cursor: pointer;
   display: flex;
@@ -84,7 +84,7 @@ const IconButton = styled.button`
 `;
 
 const CloseButton = styled(IoMdClose)`
-  color: ${(props) => props.theme.color};
+  color: white;
   font-size: 26px;
   cursor: pointer;
   margin-left: 15px;

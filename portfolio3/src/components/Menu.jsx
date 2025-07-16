@@ -10,15 +10,15 @@ const MenuContainer = styled.div`
 `;
 
 const MenuLink = styled(NavLink)`
-  color: ${(props) => props.theme.color};
+  color: gray;
   text-decoration: none;
 
   &:hover{
-    color: #535151 !important;
+    color:  ${(props) => props.theme.color};
   }
 
   &.active {
-    color: gray;
+    color: ${(props) => props.theme.color};
   }
 `;
 

@@ -39,7 +39,7 @@ const ProfileImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: solid 4px white;
+  border: solid 4px ${(props) => props.theme.background};
 `;
 
 
