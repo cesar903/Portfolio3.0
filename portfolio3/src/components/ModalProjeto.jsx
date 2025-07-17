@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 import Perfil from '../assets/perfil.jpg'
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
@@ -73,9 +75,11 @@ const InfoPanel = styled.div`
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
+  border-top: solid ${(props) => props.theme.background} 15px;
+  border-bottom: solid ${(props) => props.theme.background} 15px;
 
   @media (max-width: 768px) {
-    overflow-y: visible;
+    overflow-y: visible; 
   }
 `;
 
@@ -155,10 +159,12 @@ export default function ModalProjeto({ isOpen, onClose, projeto }) {
             <FaCircleChevronLeft />
           </PrevButton>
 
-          <SliderImage
-            src={projeto.images[currentIndex]}
-            alt={`Imagem ${currentIndex + 1}`}
-          />
+          <Zoom>
+            <SliderImage
+              src={projeto.images[currentIndex]}
+              alt={`Imagem ${currentIndex + 1}`}
+            />
+          </Zoom>
 
           <NextButton
             onClick={handleNext}
@@ -184,8 +190,6 @@ export default function ModalProjeto({ isOpen, onClose, projeto }) {
               </div>
             </div>
           </div>
-
-
         </InfoPanel>
       </ModalContent>
     </Backdrop>

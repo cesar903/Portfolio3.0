@@ -1,10 +1,12 @@
 import React from "react";
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 import Perfil from "../assets/perfil.jpg";
 import styled from "styled-components";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { BsSend } from "react-icons/bs";
 import { LuMessageCircle } from "react-icons/lu";
-import { BiSolidMessageRounded } from "react-icons/bi";
+
 
 const FeedContainer = styled.div`
   padding: 2rem 0;
@@ -103,9 +105,9 @@ export default function Knowledge({ knowledges }) {
             </div>
 
           </Header>
-
-          <Img src={item.image} alt={`Conhecimento ${idx}`} />
-
+          <Zoom>
+            <Img src={item.image} alt={`Conhecimento ${idx}`} />
+          </Zoom>
           <Actions>
             <HeartIcon />
             <MessageIcon />

@@ -14,6 +14,7 @@ import FloatingButton from "./components/FloatingButton";
 import posts from "./data/posts";
 import knowledges from "./data/knowledge";
 import markings from "./data/marking";
+import Footer from "./components/Footer";
 import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -63,6 +64,7 @@ function App() {
               <Route path="/knowledge" element={<Knowledge knowledges={knowledges} />} />
               <Route path="/marking" element={<Marking markings={markings} />} />
             </Routes>
+            <Footer/>
           </Main>
           <FloatingButton />
         </Container>
