@@ -9,6 +9,13 @@ import Python from "../assets/python.png";
 import MongoDb from "../assets/mongoDb.png";
 import Mais from "../assets/iconeMais.jpg"
 import Skills from "../assets/skills.jpg"
+import StoryReact from "../assets/StoryReact.png"
+import StoryHtml from "../assets/StoryHtml.png"
+import StoryBootstrap from "../assets/StoryBootstrap.png"
+import StoryMysql from "../assets/StoryMysql.png"
+import StoryPython from "../assets/StoryPython.png"
+import StoryMongoDb from "../assets/StoryMongoDb.png"
+import StoryWahtsapp from "../assets/StoryWhatsapp.webp"
 
 const HighlightsWrapper = styled.div`
   overflow-x: auto;
@@ -56,13 +63,12 @@ export default function Highlights() {
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   const highlights = [
-    { image: LogoReact, modalImage: Skills, label: "React ❤️", description: "Biblioteca para interfaces modernas e declarativas." },
-    { image: Html, modalImage: Skills, label: "Html,Css e JS 🚀", description: "Tríade fundamental para web." },
-    { image: Bootstrap, modalImage: Skills, label: "Bootstrap 📌", description: "Framework de componentes responsivos." },
-    { image: LogoMysql, modalImage: Skills, label: "MySql 🐬", description: "Banco de dados relacional rápido e confiável." },
-    { image: Python, modalImage: Skills, label: "Python 🐍", description: "Linguagem poderosa e versátil." },
-    { image: MongoDb, modalImage: Skills, label: "MongoDB 😜", description: "Banco de dados NoSQL orientado a documentos." },
-    { image: Mais, modalImage: Skills, label: "E muito mais..", description: "Banco de dados NoSQL orientado a documentos." },
+    { image: LogoReact, modalImage: StoryReact, label: "ReactJS ❤️", description: "Biblioteca para interfaces modernas e declarativas.", percent: "80%" },
+    { image: Html, modalImage: StoryHtml, label: "Html,Css e JS 🚀", description: "Tríade fundamental para web.", percent: "5%" },
+    { image: Bootstrap, modalImage: StoryBootstrap, label: "Bootstrap 📌", description: "Framework de componentes responsivos.", percent: "80%" },
+    { image: LogoMysql, modalImage: StoryMysql, label: "MySql 🐬", description: "Banco de dados relacional rápido e confiável.", percent: "80%" },
+    { image: Python, modalImage: StoryPython, label: "Python 🐍", description: "Linguagem poderosa e versátil.",percent: "80%" },
+    { image: MongoDb, modalImage: StoryMongoDb, label: "MongoDB 😜", description: "Banco de dados NoSQL orientado a documentos.", percent: "80%" },
   ];
 
   return (

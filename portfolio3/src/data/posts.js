@@ -25,6 +25,20 @@ import PetPer6 from "../assets/imgPetPer/PetPer6.png"
 import PetPer7 from "../assets/imgPetPer/PetPer7.png"
 import PetPer8 from "../assets/imgPetPer/PetPer8.png"
 
+import SpotifyCopy1 from "../assets/imgCopiaSpotify/CopiaSpotify.png"
+import SpotifyCopy2 from "../assets/imgCopiaSpotify/CopiaSpotify2.png"
+import SpotifyCopy3 from "../assets/imgCopiaSpotify/CopiaSpotify3.png"
+import SpotifyCopy4 from "../assets/imgCopiaSpotify/CopiaSpotify4.png"
+
+import Atrativo1 from "../assets/imgAtrativo/AtrativoMidia1.png"
+import Atrativo2 from "../assets/imgAtrativo/AtrativoMidia2.png"
+import Atrativo3 from "../assets/imgAtrativo/AtrativoMidia3.png"
+import Atrativo4 from "../assets/imgAtrativo/AtrativoMidia4.png"
+import Atrativo5 from "../assets/imgAtrativo/AtrativoMidia5.png"
+import Atrativo6 from "../assets/imgAtrativo/AtrativoMidia6.png"
+import Atrativo7 from "../assets/imgAtrativo/AtrativoMidia7.png"
+import Atrativo8 from "../assets/imgAtrativo/AtrativoMidia8.png"
+
 export default [
   {
     images: [PointParanoa1, PointParanoa12, PointParanoa2, PointParanoa3, PointParanoa4, PointParanoa5, PointParanoa6,
@@ -42,7 +56,7 @@ export default [
     Backend: Node.js com Express.js
     Banco de Dados: MongoDB Atlas
     Autenticação: JWT, Bcrypt
-    Hospedagem: Netlify (Frontend) e Render/Heroku (Backend)
+    Hospedagem: Netlify (Frontend) e Render (Backend)
 
     <strong>Funcionalidades:</strong>
     Login com autenticação segura para alunos e professores
@@ -67,29 +81,80 @@ export default [
     images: [PetPer1, PetPer2, PetPer3, PetPer4, PetPer5, PetPer6, PetPer7, PetPer8],
     perfil: Perfil,
     marcacao: "Cesar Reis",
-    description: `<strong>📌 Projeto: PetPer – Sistema de Gestão para Casa de Rações</strong><br/><br/>
+    description: `<strong>📌 Projeto: PetPer – Sistema de Gestão para Casa de Rações</strong>
     Acesse o projeto em: <a href="https://petper.netlify.app/" target="_blank" rel="noopener noreferrer">PetPer - Loja de Ração</a>
     Desenvolvi uma aplicação frontend para a <strong>PetPer – Casa de Rações</strong>, com o objetivo de facilitar o controle de estoque e a exibição dos produtos à venda. O sistema foi construído com foco na usabilidade e no suporte ao atendimento via WhatsApp, permitindo que o cliente finalizasse pedidos diretamente pelo aplicativo de mensagens.
 
-    <strong>Tecnologias Utilizadas:</strong><br/>
-    Frontend: React.js (com Vite)<br/>
-    Estilização: Bootstrap e Styled-components<br/>
-    Integração externa: Link gerado para WhatsApp via API<br/>
-    <strong>Funcionalidades:</strong><br/>
-    • Listagem dinâmica de produtos e categorias<br/>
-    • Sistema de carrinho de compras simulado<br/>
-    • Botão de finalizar pedido que redireciona para o WhatsApp com os itens da compra<br/>
-    • Controle visual de estoque e disponibilidade<br/>
-    • Layout responsivo para dispositivos móveis<br/>
-    <strong>Benefícios:</strong><br/>
-    • Facilita o controle interno da loja sem necessidade de back-end<br/>
-    • Automatiza o atendimento via WhatsApp, agilizando o processo de venda<br/>
+    <strong>Tecnologias Utilizadas:</strong>
+    Frontend: React.js (com Vite)
+    Estilização: Bootstrap e Styled-components
+    Integração externa: Link gerado para WhatsApp via API
+    <strong>Funcionalidades:</strong>
+    • Listagem dinâmica de produtos e categorias
+    • Sistema de carrinho de compras simulado
+    • Botão de finalizar pedido que redireciona para o WhatsApp com os itens da compra
+    • Controle visual de estoque e disponibilidade
+    • Layout responsivo para dispositivos móveis
+    <strong>Benefícios:</strong>
+    • Facilita o controle interno da loja sem necessidade de back-end
+    • Automatiza o atendimento via WhatsApp, agilizando o processo de venda
     • Interface limpa e responsiva, projetada para uso em tablets e celulares da loja
     `,
   },
   {
-    images: [Project2, Project1],
-    description: "Dashboard com gráficos interativos em Chart.js.",
+    images: [SpotifyCopy1, SpotifyCopy2, SpotifyCopy3, SpotifyCopy4],
+    perfil: Perfil,
+    marcacao: "Cesar Reis",
+    description: `<strong>📌 Projeto: Clone da Tela de Login do Spotify</strong>
+    Acesse o projeto em: <a href="https://clonetelaspotify.netlify.app/" target="_blank" rel="noopener noreferrer">Copia - Spotify</a>
+
+    Este projeto consiste em uma reprodução fiel da tela de login do Spotify, desenvolvida com <strong>React.js</strong> com foco em <strong>design responsivo</strong> e fidelidade visual à interface original. O objetivo foi praticar habilidades de estruturação com JSX e estilização com CSS moderno, além de simular a experiência do usuário ao acessar a plataforma de streaming.
+
+    <strong> Tecnologias Utilizadas:</strong>
+    Framework: React.js (com Vite)
+    Estilização: CSS puro
+    Responsividade: Flexbox e media queries
+
+    <strong> Funcionalidades Simuladas:</strong>
+    • Campo de e-mail/usuário e senha com layout fiel ao original
+    • Botão de login estilizado
+    • Links para recuperação de senha, cadastro e login com redes sociais
+    • Design responsivo para diferentes tamanhos de tela
+    • Simulação visual da experiência real do Spotify, sem backend
+
+    <strong>💡 Objetivos do Projeto:</strong>
+    • Prática de construção de componentes React
+    • Aprimoramento das habilidades de estilização responsiva
+    • Atenção aos detalhes visuais e usabilidade
+    `,
   },
+  {
+    images: [Atrativo1, Atrativo2, Atrativo3, Atrativo4, Atrativo5, Atrativo6, Atrativo7, Atrativo8],
+    perfil: Perfil,
+    marcacao: "Cesar Reis",
+    description: `<strong>📌 Projeto: Base para Site Institucional – Atrativo Mídia</strong>
+    Acesse o projeto em: <a href="https://atrativomidia.netlify.app/" target="_blank" rel="noopener noreferrer">Base Atrativo Midia</a>
+    Desenvolvi o site institucional da <strong>Atrativo Mídia</strong>, uma empresa especializada em marketing digital. O projeto foi construído como um site estático utilizando <strong>React.js com Vite</strong> e <strong>styled-components</strong>, priorizando desempenho, design responsivo e comunicação clara dos serviços oferecidos.
+
+    <strong> Tecnologias Utilizadas:</strong>
+    Framework: React.js (com Vite)
+    Estilização: styled-components
+    Outros: HTML semântico, responsividade com Flexbox e media queries
+
+    <strong> Funcionalidades e Características:</strong>
+    • Página inicial com banner de destaque e chamada para ação
+    • Seção sobre a empresa e seus serviços
+    • Área de depoimentos e portfólio de clientes
+    • Botões de contato integrados com WhatsApp
+    • Layout responsivo para smartphones, tablets e desktops
+    • Navegação fluida com experiência de usuário otimizada
+
+    <strong> Objetivos do Projeto:</strong>
+    • Apresentar os serviços da empresa de forma visualmente atrativa
+    • Fortalecer a presença digital da marca
+    • Criar uma interface leve, moderna e fácil de navegar
+    `
+
+  }
   // ...outros projetos
 ];

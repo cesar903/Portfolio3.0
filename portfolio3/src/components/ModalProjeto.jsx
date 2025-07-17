@@ -36,7 +36,7 @@ const ModalContent = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    height: 90vh; /* aqui está o que você quer */
+    height: 90vh; 
     overflow-y: auto;
   }
 `;
@@ -109,7 +109,7 @@ const NavButton = styled.button`
   font-size: 28px;
   background: none;
   border: none;
-  color: ${(props) => props.theme.color};
+  color: white;
   cursor: pointer;
   z-index: 1;
 

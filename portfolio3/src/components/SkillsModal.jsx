@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { FiTool } from "react-icons/fi";
 import styled, { keyframes } from "styled-components";
 import { IoMdClose } from "react-icons/io";
 import { IoIosPause } from "react-icons/io";
@@ -103,6 +104,40 @@ const SkillImage = styled.img`
   background: #222;
 `;
 
+const SkillCard = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0 10px;
+`;
+
+const SkillIcon = styled.div`
+  margin-right: 1rem;
+`;
+
+const SkillInfo = styled.div`
+  flex: 1;
+`;
+
+const SkillName = styled.h4`
+  margin: 0;
+`;
+
+const SkillBar = styled.div`
+  height: 8px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+const SkillProgress = styled.div`
+  height: 100%;
+  background: linear-gradient(90deg, #61dbfb, #1e90ff);
+  width: ${props => props.width};
+  transition: width 0.8s ease;
+`;
+
+
 export default function SkillsModal({ skill, onClose }) {
   const [paused, setPaused] = useState(false);
   const timeoutRef = useRef(null);
@@ -130,7 +165,7 @@ export default function SkillsModal({ skill, onClose }) {
       <ModalBox onClick={(e) => e.stopPropagation()}>
         <ProgressBar paused={paused} />
         <Header>
-          <SkillLabel>{skill.label}</SkillLabel>
+
           <div style={{ display: "flex", alignItems: "center" }}>
             <IconButton onClick={togglePause}>
               {paused ? <FaPlay /> : <IoIosPause />}
@@ -139,6 +174,15 @@ export default function SkillsModal({ skill, onClose }) {
           </div>
         </Header>
         <SkillImage src={skill.modalImage || skill.image} alt={skill.label} />
+        <SkillCard>
+          <SkillIcon><FiTool size={32} color="#61DBFB" /></SkillIcon>
+          <SkillInfo><SkillLabel>Skills: {skill.label}</SkillLabel>
+            <SkillBar>
+              <SkillProgress width={skill.percent} />
+            </SkillBar>
+          </SkillInfo>
+        </SkillCard>
+
       </ModalBox>
     </Overlay>
   );
