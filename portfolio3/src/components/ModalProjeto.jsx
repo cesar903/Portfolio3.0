@@ -177,7 +177,7 @@ export default function ModalProjeto({ isOpen, onClose, projeto }) {
           <div className="container">
             <div className="row">
               <div className="col-2">
-                <ImgPerfil src={projeto.perfil} alt="" className="img-fluid" />
+                <ImgPerfil src={projeto.perfil} alt="Imagem de perfil" className="img-fluid" />
               </div>
               <div className="col-10">
                 <h5>@{projeto.marcacao}</h5>

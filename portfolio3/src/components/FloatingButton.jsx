@@ -67,18 +67,22 @@ const Badge = styled.span`
 
 export default function FloatingButton() {
 
-    return (
-        <FloatingWrapper
-            href={`https://api.whatsapp.com/send/?phone=5511982192778&text&type=phone_number&app_absent=0`}
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <IconWrapper>
-                <Badge>3</Badge>
-                <TbBrandMessenger />
-            </IconWrapper>
-            <Text>Mensagens</Text>
-            <Avatar src={Perfil} alt="Perfil" loading="lazy"/>
-        </FloatingWrapper>
-    );
+  return (
+    <FloatingWrapper
+      href={`https://api.whatsapp.com/send/?phone=5511982192778&text&type=phone_number&app_absent=0`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <IconWrapper>
+        <Badge>3</Badge>
+        <TbBrandMessenger />
+      </IconWrapper>
+      <Text>Mensagens</Text>
+      <Avatar
+        src={Perfil}
+        alt="Perfil"
+        loading="lazy"
+      />
+    </FloatingWrapper>
+  );
 }

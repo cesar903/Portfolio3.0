@@ -155,7 +155,7 @@ export default function ProfileHeader({ isDark, setIsDark }) {
                 </Bio>
                 <Bio>Codando e Correndo 🧠💻🏃‍♂️</Bio>
                 <Bio>
-                  <a href="https://github.com/cesar903" target="_blank" rel="noreferrer">
+                  <a href="https://github.com/cesar903" target="_blank" rel="noopener noreferrer">
                     <FaGithub /> github.com/cesar903
                   </a>
                 </Bio>

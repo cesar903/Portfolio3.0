@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet-async";
 import { FaHeart } from "react-icons/fa";
 import { BiSolidMessageRounded } from "react-icons/bi";
 import ModalProjeto from "./ModalProjeto";
@@ -78,6 +79,10 @@ export default function Marking({ markings }) {
 
   return (
     <>
+      <Helmet>
+        <title>Menções - Cesar Reis</title>
+        <meta name="description" content="Veja as menções que Cesar Reis recebeu." />
+      </Helmet>
       <GridContainer>
         <div className="container-fluid">
           <div className="row g-0">
@@ -85,7 +90,7 @@ export default function Marking({ markings }) {
               <Col key={idx} className="col-4 col-md-4">
                 <CardWrapper onClick={() => setSelectedMarking(marking)}>
                   <TopRightIcon />
-                  <Img src={marking.images[0]} alt={`Projeto ${idx}`} loading="lazy"/>
+                  <Img src={marking.images[0]} alt={`Projeto ${idx}`} loading="lazy" />
                   <Overlay className="overlay">
                     <HeartIcon />
                     <MessageIcon />

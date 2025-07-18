@@ -1,12 +1,12 @@
 import React from "react";
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
-import Perfil from "../assets/perfil.webp";
+import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { BsSend } from "react-icons/bs";
 import { LuMessageCircle } from "react-icons/lu";
-
+import Perfil from "../assets/perfil.webp";
 
 const FeedContainer = styled.div`
   padding: 2rem 0;
@@ -94,31 +94,38 @@ const Date = styled.p`
 
 export default function Knowledge({ knowledges }) {
   return (
-    <FeedContainer>
-      {knowledges.map((item, idx) => (
-        <Card key={idx}>
-          <Header>
-            <ImgPerfil src={Perfil} alt="Perfil" loading="lazy"/>
-            <div>
-              <Username>cesarreis__</Username>
-              <Date>{item.data}</Date>
-            </div>
+    <>
+      <Helmet>
+        <title>Sobre - Cesar Reis</title>
+        <meta name="description" content="Descubra tudo sobre o Cesar Reis desenvolvedor React." />
+      </Helmet>
+      <FeedContainer>
+        {knowledges.map((item, idx) => (
+          <Card key={idx}>
+            <Header>
+              <ImgPerfil src={Perfil} alt="Perfil" loading="lazy" />
+              <div>
+                <Username>cesarreis__</Username>
+                <Date>{item.data}</Date>
+              </div>
 
-          </Header>
-          <Zoom>
-            <Img src={item.image} alt={`Conhecimento ${idx}`} loading="lazy"/>
-          </Zoom>
-          <Actions>
-            <HeartIcon />
-            <MessageIcon />
-            <SendIcon />
-          </Actions>
+            </Header>
+            <Zoom>
+              <Img src={item.image} alt={`Conhecimento ${idx}`} loading="lazy" />
+            </Zoom>
+            <Actions>
+              <HeartIcon />
+              <MessageIcon />
+              <SendIcon />
+            </Actions>
 
-          <Description>
-            <strong> cesarreis__ </strong> {item.description || "Legenda do post ou conhecimento aqui."}
-          </Description>
-        </Card>
-      ))}
-    </FeedContainer>
+            <Description>
+              <strong> cesarreis__ </strong> {item.description || "Legenda do post ou conhecimento aqui."}
+            </Description>
+          </Card>
+        ))}
+      </FeedContainer>
+    </>
+
   );
 }

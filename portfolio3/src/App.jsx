@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { useState } from "react";
 import { lightTheme, darkTheme } from "./components/theme";
+import { HelmetProvider } from "react-helmet-async"; // 👈 Import
 
 import Sidebar from "./components/Sidebar";
 import ProfileHeader from "./components/ProfileHeader";
@@ -28,8 +29,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Container = styled.div`
-`;
+const Container = styled.div``;
 
 const Main = styled.div`
   flex-grow: 1;
@@ -50,26 +50,28 @@ function App() {
   const [isDark, setIsDark] = useState(false);
 
   return (
-    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <GlobalStyle />
-      <Router>
-        <Container>
-          <Sidebar />
-          <Main>
-            <ProfileHeader isDark={isDark} setIsDark={setIsDark}/>
-            <Highlights />
-            <Menu />
-            <Routes>
-              <Route path="/" element={<PostGrid posts={posts} />} />
-              <Route path="/knowledge" element={<Knowledge knowledges={knowledges} />} />
-              <Route path="/marking" element={<Marking markings={markings} />} />
-            </Routes>
-            <Footer/>
-          </Main>
-          <FloatingButton />
-        </Container>
-      </Router>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <Router>
+          <Container>
+            <Sidebar />
+            <Main>
+              <ProfileHeader isDark={isDark} setIsDark={setIsDark} />
+              <Highlights />
+              <Menu />
+              <Routes>
+                <Route path="/" element={<PostGrid posts={posts} />} />
+                <Route path="/knowledge" element={<Knowledge knowledges={knowledges} />} />
+                <Route path="/marking" element={<Marking markings={markings} />} />
+              </Routes>
+              <Footer />
+            </Main>
+            <FloatingButton />
+          </Container>
+        </Router>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

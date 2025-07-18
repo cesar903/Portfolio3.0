@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import ModalProjeto from "./ModalProjeto";
+import { Helmet } from "react-helmet-async";
 import { FaHeart } from "react-icons/fa";
 import { BiSolidMessageRounded } from "react-icons/bi";
 import { IoIosPhotos } from "react-icons/io";
@@ -79,28 +80,35 @@ export default function PostGrid({ posts }) {
   const [selectedPost, setSelectedPost] = useState(null);
 
   return (
-    <GridContainer>
-      <div className="container-fluid">
-        <div className="row g-0">
-          {posts.map((post, idx) => (
-            <Col key={idx} className="col-4 col-md-4">
-              <CardWrapper onClick={() => setSelectedPost(post)}>
-                <TopRightIcon />
-                <Img src={post.images[0]} alt={`Projeto ${idx}`} loading="lazy"/>
-                <Overlay className="overlay">
-                  <HeartIcon />
-                  <MessageIcon />
-                </Overlay>
-              </CardWrapper>
-            </Col>
-          ))}
+    <>
+      <Helmet>
+        <title>Início - Cesar Reis</title>
+        <meta name="description" content="Veja os projetos de Cesar Reis desenvolvidos com React." />
+      </Helmet>
+      <GridContainer>
+        <div className="container-fluid">
+          <div className="row g-0">
+            {posts.map((post, idx) => (
+              <Col key={idx} className="col-4 col-md-4">
+                <CardWrapper onClick={() => setSelectedPost(post)}>
+                  <TopRightIcon />
+                  <Img src={post.images[0]} alt={`Projeto ${idx}`} loading="lazy" />
+                  <Overlay className="overlay">
+                    <HeartIcon />
+                    <MessageIcon />
+                  </Overlay>
+                </CardWrapper>
+              </Col>
+            ))}
+          </div>
         </div>
-      </div>
-      <ModalProjeto
-        isOpen={selectedPost !== null}
-        onClose={() => setSelectedPost(null)}
-        projeto={selectedPost}
-      />
-    </GridContainer>
+        <ModalProjeto
+          isOpen={selectedPost !== null}
+          onClose={() => setSelectedPost(null)}
+          projeto={selectedPost}
+        />
+      </GridContainer>
+    </>
+
   );
 }
