@@ -1,7 +1,7 @@
 import React from "react";
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
-import Perfil from "../assets/perfil.jpg";
+import Perfil from "../assets/perfil.webp";
 import styled from "styled-components";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { BsSend } from "react-icons/bs";
@@ -98,7 +98,7 @@ export default function Knowledge({ knowledges }) {
       {knowledges.map((item, idx) => (
         <Card key={idx}>
           <Header>
-            <ImgPerfil src={Perfil} alt="Perfil" />
+            <ImgPerfil src={Perfil} alt="Perfil" loading="lazy"/>
             <div>
               <Username>cesarreis__</Username>
               <Date>{item.data}</Date>
@@ -106,7 +106,7 @@ export default function Knowledge({ knowledges }) {
 
           </Header>
           <Zoom>
-            <Img src={item.image} alt={`Conhecimento ${idx}`} />
+            <Img src={item.image} alt={`Conhecimento ${idx}`} loading="lazy"/>
           </Zoom>
           <Actions>
             <HeartIcon />

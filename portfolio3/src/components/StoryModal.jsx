@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import StoryImage from "../assets/story.png";
-import PerfilImg from "../assets/perfil.jpg";
+import StoryImage from "../assets/story.webp";
+import PerfilImg from "../assets/perfil.webp";
 import { IoIosPause } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
@@ -147,7 +147,7 @@ export default function StoryModal({ onClose }) {
         <ProgressBar paused={paused} />
         <Header>
           <ProfileSection>
-            <ProfilePic src={PerfilImg} alt="Cesar Reis" />
+            <ProfilePic src={PerfilImg} alt="Cesar Reis" loading="lazy" />
             <Username>cesarreis__</Username>
           </ProfileSection>
 

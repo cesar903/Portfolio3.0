@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import Zoom from 'react-medium-image-zoom';
-import 'react-medium-image-zoom/dist/styles.css';
-import Perfil from '../assets/perfil.jpg'
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
@@ -73,7 +71,7 @@ const InfoPanel = styled.div`
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none; 
   -ms-overflow-style: none;
   border-top: solid ${(props) => props.theme.background} 15px;
   border-bottom: solid ${(props) => props.theme.background} 15px;
@@ -163,6 +161,7 @@ export default function ModalProjeto({ isOpen, onClose, projeto }) {
             <SliderImage
               src={projeto.images[currentIndex]}
               alt={`Imagem ${currentIndex + 1}`}
+              loading="lazy"
             />
           </Zoom>
 

@@ -85,7 +85,7 @@ export default function Marking({ markings }) {
               <Col key={idx} className="col-4 col-md-4">
                 <CardWrapper onClick={() => setSelectedMarking(marking)}>
                   <TopRightIcon />
-                  <Img src={marking.images[0]} alt={`Projeto ${idx}`} />
+                  <Img src={marking.images[0]} alt={`Projeto ${idx}`} loading="lazy"/>
                   <Overlay className="overlay">
                     <HeartIcon />
                     <MessageIcon />

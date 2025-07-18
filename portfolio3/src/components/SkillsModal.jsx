@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { FiTool } from "react-icons/fi";
+import PerfilImg from "../assets/perfil.webp";
 import styled, { keyframes } from "styled-components";
 import { IoMdClose } from "react-icons/io";
 import { IoIosPause } from "react-icons/io";
@@ -16,7 +16,8 @@ const Overlay = styled.div`
 `;
 
 const ModalBox = styled.div`
-  max-width: 380px;
+  width: 400px;
+  height: 500px;
   background: ${(props) => props.theme.background};
   border-radius: 5px;
   overflow: hidden;
@@ -25,9 +26,12 @@ const ModalBox = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
+    width: 90vw;
+    height: 90vh;
     border-radius: 0;
   }
 `;
+
 
 const progress = keyframes`
   from { width: 0%; }
@@ -64,11 +68,6 @@ const Header = styled.div`
   padding: 10px;
 `;
 
-const SkillLabel = styled.span`
-  font-weight: bold;
-  font-size: 16px;
-  color: ${(props) => props.theme.color};
-`;
 
 const IconButton = styled.button`
   background: none;
@@ -84,57 +83,50 @@ const IconButton = styled.button`
   }
 `;
 
-const CloseButton = styled(IoMdClose)`
-  color: white;
-  font-size: 26px;
-  cursor: pointer;
-  margin-left: 15px;
-
-  &:hover {
-    color: #ff4444;
-  }
-`;
 
 const SkillImage = styled.img`
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   object-fit: contain;
-  max-height: 350px;
-  background: #222;
+  display: block;
+  background: black;
 `;
 
-const SkillCard = styled.div`
+
+
+const ProfileSection = styled.div`
   display: flex;
   align-items: center;
-  margin: 1rem 0;
-  padding: 0 10px;
+  gap: 10px;
 `;
 
-const SkillIcon = styled.div`
-  margin-right: 1rem;
+const ProfilePic = styled.img`
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid white;
 `;
 
-const SkillInfo = styled.div`
-  flex: 1;
+const Username = styled.span`
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
 `;
 
-const SkillName = styled.h4`
-  margin: 0;
+const IconGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 
-const SkillBar = styled.div`
-  height: 8px;
-  background: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-`;
+const CloseIcon = styled(IoMdClose)`
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
 
-const SkillProgress = styled.div`
-  height: 100%;
-  background: linear-gradient(90deg, #61dbfb, #1e90ff);
-  width: ${props => props.width};
-  transition: width 0.8s ease;
+  &:hover {
+    color: #ff4d4d;
+  }
 `;
 
 
@@ -149,7 +141,7 @@ export default function SkillsModal({ skill, onClose }) {
       }, 5000);
     }
     return () => clearTimeout(timeoutRef.current);
-  }, [paused, onClose, skill]); // reset timer se trocar skill
+  }, [paused, onClose, skill]); 
 
   if (!skill) return null;
 
@@ -164,24 +156,24 @@ export default function SkillsModal({ skill, onClose }) {
     <Overlay onClick={onClose}>
       <ModalBox onClick={(e) => e.stopPropagation()}>
         <ProgressBar paused={paused} />
-        <Header>
+        <Header><Header>
+          <ProfileSection>
+            <ProfilePic src={PerfilImg} alt="Cesar Reis" loading="lazy"/>
+            <Username>cesarreis__</Username>
+          </ProfileSection>
 
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <IconButton onClick={togglePause}>
+          <IconGroup>
+            <IconButton onClick={togglePause} title="Pausar/Reproduzir">
               {paused ? <FaPlay /> : <IoIosPause />}
             </IconButton>
-            <CloseButton onClick={onClose} title="Fechar" />
-          </div>
+            <IconButton onClick={onClose} title="Fechar">
+              <CloseIcon />
+            </IconButton>
+          </IconGroup>
         </Header>
-        <SkillImage src={skill.modalImage || skill.image} alt={skill.label} />
-        <SkillCard>
-          <SkillIcon><FiTool size={32} color="#61DBFB" /></SkillIcon>
-          <SkillInfo><SkillLabel>Skills: {skill.label}</SkillLabel>
-            <SkillBar>
-              <SkillProgress width={skill.percent} />
-            </SkillBar>
-          </SkillInfo>
-        </SkillCard>
+        </Header>
+        <SkillImage src={skill.modalImage || skill.image} alt={skill.label} loading="lazy" />
+
 
       </ModalBox>
     </Overlay>

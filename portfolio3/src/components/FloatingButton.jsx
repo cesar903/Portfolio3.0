@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TbBrandMessenger } from "react-icons/tb";
-import Perfil from "../assets/perfil.jpg"
+import Perfil from "../assets/perfil.webp"
 
 const FloatingWrapper = styled.a`
   text-decoration: none;
@@ -78,7 +78,7 @@ export default function FloatingButton() {
                 <TbBrandMessenger />
             </IconWrapper>
             <Text>Mensagens</Text>
-            <Avatar src={Perfil} alt="Perfil" />
+            <Avatar src={Perfil} alt="Perfil" loading="lazy"/>
         </FloatingWrapper>
     );
 }

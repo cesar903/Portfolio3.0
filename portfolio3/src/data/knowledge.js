@@ -1,11 +1,10 @@
-import Project1 from "../assets/project2.jpg";
-import Zema from "../assets/Zema.jpg"
-import Informi from "../assets/Informi.jpg"
-import Anhembi from "../assets/Anhembi.png"
-import Athon from "../assets/Athon.png"
-import SuperGeeks from "../assets/supergeeks.png"
-import Puc from "../assets/Puc.png"
-import Corrida from "../assets/Corrida.png"
+import Zema from "../assets/Zema.webp"
+import Informi from "../assets/Informi.webp"
+import Anhembi from "../assets/Anhembi.webp"
+import Athon from "../assets/Athon.webp"
+import SuperGeeks from "../assets/supergeeks.webp"
+import Puc from "../assets/Puc.webp"
+import Corrida from "../assets/Corrida.webp"
 
 export default [
   { image: Puc, data: "01/2025 - Atualmente", description: "O futuro não espera, por isso estou me realizando profissionalmente com uma pós-graduação em Inteligência Artificial e Aprendizado de Máquina, me preparando para os desafios da tecnologia de ponta. Agrdeço a Puc Minas." },

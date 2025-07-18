@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useTheme } from 'styled-components';
-import Logo from "../assets/logo.png"
-import LogoDark from "../assets/logoDark.png"
+import Logo from "../assets/logo.webp"
+import LogoDark from "../assets/logoDark.webp"
+import ContornoDark from "../assets/DevCesarContornoPreto.webp"
+import ContornoWhite from "../assets/DevCesarContornoBranco.webp"
 import { NavLink } from "react-router-dom";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoIosSearch } from "react-icons/io";
@@ -42,12 +44,14 @@ const LogoWrapper = styled.div`
   text-align: center;
   margin-bottom: 20px;
 
-  img{
+  .imgmd{
     width: 100px;
   }
-
+  
   @media (max-width: 768px) {
-    display: none;
+     .imgmd{
+        display: none;
+    }
   }
 `;
 
@@ -75,6 +79,7 @@ const SidebarButton = styled.button`
   padding-left: 10px;
   font-weight: 800;
 
+
   span{
     margin-left: 15px;
   }
@@ -98,7 +103,7 @@ export default function Sidebar() {
   return (
     <SidebarContainer>
       <LogoWrapper>
-        <img src={theme.title === 'dark' ? LogoDark : Logo} alt="logo" className="mb-4" />
+        <img src={theme.title === 'dark' ? ContornoWhite : ContornoDark} alt="logo" className="mb-4 imgmd" />
       </LogoWrapper>
 
       <ButtonsWrapper>

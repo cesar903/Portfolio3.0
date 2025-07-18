@@ -86,7 +86,7 @@ export default function PostGrid({ posts }) {
             <Col key={idx} className="col-4 col-md-4">
               <CardWrapper onClick={() => setSelectedPost(post)}>
                 <TopRightIcon />
-                <Img src={post.images[0]} alt={`Projeto ${idx}`} />
+                <Img src={post.images[0]} alt={`Projeto ${idx}`} loading="lazy"/>
                 <Overlay className="overlay">
                   <HeartIcon />
                   <MessageIcon />

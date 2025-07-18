@@ -1,21 +1,20 @@
 import { useState } from "react";
 import styled from "styled-components";
 import SkillsModal from "./SkillsModal";
-import LogoReact from "../assets/iconeReact.png";
+import LogoReact from "../assets/iconeReact.webp";
 import Html from "../assets/HtmlCssJs.webp";
 import Bootstrap from "../assets/bootstrap.webp";
-import LogoMysql from "../assets/logoMysql.png";
-import Python from "../assets/python.png";
-import MongoDb from "../assets/mongoDb.png";
-import Mais from "../assets/iconeMais.jpg"
-import Skills from "../assets/skills.jpg"
-import StoryReact from "../assets/StoryReact.png"
-import StoryHtml from "../assets/StoryHtml.png"
-import StoryBootstrap from "../assets/StoryBootstrap.png"
-import StoryMysql from "../assets/StoryMysql.png"
-import StoryPython from "../assets/StoryPython.png"
-import StoryMongoDb from "../assets/StoryMongoDb.png"
-import StoryWahtsapp from "../assets/StoryWhatsapp.webp"
+import LogoMysql from "../assets/logoMysql.webp";
+import Python from "../assets/python.webp";
+import MongoDb from "../assets/mongoDb.webp";
+import StoryReact from "../assets/StoryReact.webp"
+import StoryHtml from "../assets/StoryHtml.webp"
+import StoryBootstrap from "../assets/StoryBootstrap.webp"
+import StoryMysql from "../assets/StoryMysql.webp"
+import StoryPython from "../assets/StoryPython.webp"
+import StoryMongoDb from "../assets/StoryMongoDb.webp"
+import Logo from "../assets/DevCesar.webp"
+import LogoStory from "../assets/LogoFundo.webp"
 
 const HighlightsWrapper = styled.div`
   overflow-x: auto;
@@ -63,6 +62,7 @@ export default function Highlights() {
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   const highlights = [
+    { image: Logo, modalImage: LogoStory, label: "CEO DevCesar 👓", description: "Biblioteca para interfaces modernas e declarativas.", percent: "80%" },
     { image: LogoReact, modalImage: StoryReact, label: "ReactJS ❤️", description: "Biblioteca para interfaces modernas e declarativas.", percent: "80%" },
     { image: Html, modalImage: StoryHtml, label: "Html,Css e JS 🚀", description: "Tríade fundamental para web.", percent: "5%" },
     { image: Bootstrap, modalImage: StoryBootstrap, label: "Bootstrap 📌", description: "Framework de componentes responsivos.", percent: "80%" },
@@ -78,7 +78,7 @@ export default function Highlights() {
           {highlights.map((item, idx) => (
             <Highlight key={idx} onClick={() => setSelectedSkill(item)}>
               <Circle>
-                <Image src={item.image} alt={`highlight-${idx}`} />
+                <Image src={item.image} alt={`highlight-${idx}`} loading="lazy"/>
               </Circle>
               <small>{item.label}</small>
             </Highlight>

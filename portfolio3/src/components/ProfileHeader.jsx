@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import StoryModal from './StoryModal';
-import Perfil from '../assets/perfil.jpg'
+import Perfil from '../assets/perfil.webp'
 import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -120,7 +120,7 @@ export default function ProfileHeader({ isDark, setIsDark }) {
           <div className='row  text-start align-items-center'>
             <div className="col-12 col-lg-4 col-md-12">
               <ProfileImgWrapper onClick={handleStoryOpen}>
-                <ProfileImg src={Perfil} alt="Cesar Reis" />
+                <ProfileImg src={Perfil} alt="Cesar Reis" loading="lazy" />
               </ProfileImgWrapper>
 
             </div>
